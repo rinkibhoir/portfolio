@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+      font-size: 1.5em;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+      font-size: 1.8em;
+    }
+
+    .gallery-wrapper {
+      position: relative;
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .scroll-container {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 20px;
+      padding: 20px;
+      scroll-behavior: smooth;
+    }
+
+    .scroll-container img {
+      flex: 0 0 100%;
+      max-width: 100%;
+      height: auto;
+      scroll-snap-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      font-size: 1.5em;
+      cursor: pointer;
+      z-index: 10;
+      border-radius: 50%;
+    }
+
+    .nav-button.left {
+      left: 10px;
+    }
+
+    .nav-button.right {
+      right: 10px;
+    }
+
+    .nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .back-link {
+      text-align: center;
+      display: block;
+      margin: 20px auto;
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      font-size: 1.1em;
+    }
+
+    /* Responsive font sizes */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 1.4em;
+      }
+      header {
+        font-size: 1.2em;
+      }
+      .nav-button {
+        padding: 8px 12px;
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>GENOMIC EXTRACTOR</header>
+
+  <h1>Screenshots</h1>
+
+  <div class="gallery-wrapper">
+    <button class="nav-button left" onclick="scrollLeft()">&#10094;</button>
+
+    <div class="scroll-container" id="scrollContainer">
+      <img src="Screenshot (486).png" alt="Result 1" />
+      <img src="Screenshot (487).png" alt="Result 2" />
+      <img src="Screenshot (488).png" alt="Result 3" />
+      <img src="Screenshot (489).png" alt="Result 4" />
+      <img src="Screenshot (490).png" alt="Result 5" />
+      <img src="Screenshot (491).png" alt="Result 6" />
+      <img src="Screenshot (492).png" alt="Result 7" />
+    </div>
+
+    <button class="nav-button right" onclick="scrollRight()">&#10095;</button>
+  </div>
+
+  <a href="index.html" class="back-link">← Back to Project</a>
+
+  <script>
+    const scrollContainer = document.getElementById("scrollContainer");
+
+    function scrollLeft() {
+      scrollContainer.scrollBy({ left: -window.innerWidth, behavior: "smooth" });
+    }
+
+    function scrollRight() {
+      scrollContainer.scrollBy({ left: window.innerWidth, behavior: "smooth" });
+    }
+  </script>
+</body>
+</html>
